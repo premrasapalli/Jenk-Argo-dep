@@ -1,1 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: PR-APP
+  labels:
+    app: PR-APP
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: PR-APP
+  template:
+    metadata:
+      labels:
+        app: PR-APP
+    spec:
+      containers:
+      - name: PR-APP
+        image: 
+        ports:
+        - containerPort: 8080
 
+  
