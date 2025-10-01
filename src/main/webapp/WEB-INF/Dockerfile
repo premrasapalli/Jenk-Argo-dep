@@ -1,16 +1,16 @@
 ## -----------------------------
 ## Artifact build stage
 ## -----------------------------
-FROM maven AS buildstage
+FROM maven:latest AS buildstage
 
 WORKDIR /opt/Jenk-Argo-dep
 
-# Copy only the files we need
-COPY src/main/webapp/WEB-INF/pom.xml .
-COPY src/main/webapp/WEB-INF/src ./src
+# Copy the entire Maven project
+COPY pom.xml .
+COPY src ./src
 
 # Build the project to generate the WAR
-RUN mvn clean install
+RUN mvn clean package
 
 ## -----------------------------
 ## Tomcat deployment stage
